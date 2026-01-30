@@ -14700,3 +14700,25 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+.preview-row {
+    margin-bottom: 20px;
+}
+
+.preview-row label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.preview-box {
+    min-height: 60px;
+    padding: 10px;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+    background: #fafafa;
+    white-space: pre-wrap;
+}
+.preview-title {
+    text-align: center;
+    font-weight: bold;
+}
