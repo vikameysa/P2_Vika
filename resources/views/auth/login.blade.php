@@ -534,8 +534,9 @@
                                         <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">
                                                 <button type="button" class="btn mb-1 btn-success">Simpan
-                                                    DB</button>
-                                                <button type="button" class="btn mb-1 btn-info">Print</button>
+                                                    DB
+                                                </button>
+                                                <button type="button" class="btn mb-1 btn-info" onclick="printSurat()">Print</button>
                                                 <button type="button" class="btn mb-1 btn-warning">Close</button>
                                             </div>
                                             <div class="col-lg-8 ml-auto">
@@ -551,26 +552,22 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="preview-title">JOB APPLICATION LETTER</h4>
-                                <div class="a4-paper">
+                                <div id="printSurat">
 
-                                    <p id="pvKotaTanggal" class="text-right font-weight-bold"></p>
+                                        <h3 class="text-center">JOB APPLICATION LETTER</h3>
 
-                                    <p id="pvSubject" class="mt-3 font-weight-bold"></p>
+                                        <p id="pvKotaTanggal" class="text-right font-weight-bold"></p>
+                                        <p id="pvSubject" class="mt-3 font-weight-bold"></p>
+                                        <p id="pvParagraf1" class="mt-3 text-justify"></p>
+                                        <p id="pvParagraf2" class="mt-3 text-justify"></p>
+                                        <p id="pvParagraf3" class="mt-3 text-justify"></p>
 
-                                    <p id="pvParagraf1" class="mt-3 text-justify"></p>
+                                        <br>
+                                        <p class="mt-4">Hormat saya,</p>
+                                        <br><br>
+                                        <p id="pvNamaPenulis" class="font-weight-bold"></p>
 
-                                    <p id="pvParagraf2" class="mt-3 text-justify"></p>
-
-                                    <p id="pvParagraf3" class="mt-3 text-justify"></p>
-
-                                    <br>
-
-                                    <p class="mt-4">Hormat saya,</p>
-
-                                    <br><br>
-
-                                    <p id="pvNamaPenulis" class="font-weight-bold"></p>
+                                    </div>
 
                                 </div>
                             </div>
@@ -603,21 +600,39 @@
     <!-- <script src="js/gleek.js"></script> -->
     <!-- <script src="js/styleSwitcher.js"></script> -->
     <script>
-        function sync(inputId, previewId) {
-            document.getElementById(inputId).addEventListener("input", function () {
-                document.getElementById(previewId).innerText = this.value;
+document.addEventListener("DOMContentLoaded", function () {
+
+    function sync(inputId, previewId) {
+        const input = document.getElementById(inputId);
+        const preview = document.getElementById(previewId);
+
+        if (input && preview) {
+            // isi awal kalau sudah ada value
+            preview.innerText = input.value;
+
+            input.addEventListener("input", function () {
+                preview.innerText = this.value;
             });
         }
+    }
 
-        sync("kotaTanggal", "pvKotaTanggal");
-        sync("subjectAlamat", "pvSubject");
-        sync("paragraf1", "pvParagraf1");
-        sync("paragraf2", "pvParagraf2");
-        sync("paragraf3", "pvParagraf3");
-        sync("namaPenulis", "pvNamaPenulis");
-    </script>
+    sync("kotaTanggal", "pvKotaTanggal");
+    sync("subjectAlamat", "pvSubject");
+    sync("paragraf1", "pvParagraf1");
+    sync("paragraf2", "pvParagraf2");
+    sync("paragraf3", "pvParagraf3");
+    sync("namaPenulis", "pvNamaPenulis");
+
+});
+
+// fungsi tombol print
+function printSurat() {
+    window.print();
+}
+</script>
 
 
+    
 </body>
 
 </html>
