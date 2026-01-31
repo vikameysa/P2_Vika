@@ -90,6 +90,18 @@
 <html lang="en">
 
 <head>
+    {{-- <style>
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #printArea, #printArea * {
+        visibility: visible;
+    }
+}
+</style> --}}
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -600,32 +612,75 @@
     <!-- <script src="js/gleek.js"></script> -->
     <!-- <script src="js/styleSwitcher.js"></script> -->
     <script>
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
 
-    function sync(inputId, previewId) {
-        const input = document.getElementById(inputId);
-        const preview = document.getElementById(previewId);
+//     function sync(inputId, previewId) {
+//         const input = document.getElementById(inputId);
+//         const preview = document.getElementById(previewId);
 
-        if (input && preview) {
-            // isi awal kalau sudah ada value
-            preview.innerText = input.value;
+//         if (input && preview) {
+//             preview.innerText = input.value;
 
-            input.addEventListener("input", function () {
-                preview.innerText = this.value;
-            });
-        }
-    }
+//             input.addEventListener("input", function () {
+//                 preview.innerText = this.value;
+//             });
+//         }
+//     }
 
-    sync("kotaTanggal", "pvKotaTanggal");
-    sync("subjectAlamat", "pvSubject");
-    sync("paragraf1", "pvParagraf1");
-    sync("paragraf2", "pvParagraf2");
-    sync("paragraf3", "pvParagraf3");
-    sync("namaPenulis", "pvNamaPenulis");
+//     sync("kotaTanggal", "pvKotaTanggal");
+//     sync("subjectAlamat", "pvSubject");
+//     sync("paragraf1", "pvParagraf1");
+//     sync("paragraf2", "pvParagraf2");
+//     sync("paragraf3", "pvParagraf3");
+//     sync("namaPenulis", "pvNamaPenulis");
+// });
 
-});
+// tombol print
+function printSurat() {
+    window.print();
+}
 
-// fungsi tombol print
+</script>
+
+<script>
+function nl2br(text) {
+    return text.replace(/\n/g, "<br>");
+}
+
+const kotaTanggal = document.getElementById("kotaTanggal");
+const subjectAlamat = document.getElementById("subjectAlamat");
+const paragraf1 = document.getElementById("paragraf1");
+const paragraf2 = document.getElementById("paragraf2");
+const paragraf3 = document.getElementById("paragraf3");
+const namaPenulis = document.getElementById("namaPenulis");
+
+function updateSurat() {
+    document.getElementById("pvKotaTanggal").innerHTML =
+        kotaTanggal.value || "City, Date";
+
+    document.getElementById("pvSubject").innerHTML =
+        "<strong>Subject:</strong> " + (subjectAlamat.value || "HRD");
+
+    document.getElementById("pvParagraf1").innerHTML =
+        nl2br(paragraf1.value || "ini paragraph 1...");
+
+    document.getElementById("pvParagraf2").innerHTML =
+        nl2br(paragraf2.value || "ini paragraph 2...");
+
+    document.getElementById("pvParagraf3").innerHTML =
+        nl2br(paragraf3.value || "ini paragraph 3...");
+
+    document.getElementById("pvNamaPenulis").innerHTML =
+        namaPenulis.value || "Vika Meysa";
+}
+
+// Update otomatis saat mengetik
+[kotaTanggal, subjectAlamat, paragraf1, paragraf2, paragraf3, namaPenulis]
+    .forEach(el => el.addEventListener("input", updateSurat));
+
+// Jalankan sekali saat halaman dibuka
+updateSurat();
+
 function printSurat() {
     window.print();
 }

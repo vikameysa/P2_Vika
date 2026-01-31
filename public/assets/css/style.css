@@ -21507,8 +21507,17 @@ html[dir="rtl"]
 
 @media print {
     @page {
-        size: A4;
-        margin: 15mm;
+        size: A4 portrait;
+        margin: 20mm;
+    }
+
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        background: white;
     }
 
     body * {
@@ -21521,116 +21530,64 @@ html[dir="rtl"]
     }
 
     #printSurat {
-        position: static;
-        left: auto;
-        top: auto;
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 0;
-        box-sizing: border-box;
-        background: white;
-        color: #000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        position: absolute;
+        left: 50%;
+        top: 22mm;
+        transform: translateX(-50%);
+        width: 190mm; /* lebih besar */
+        max-width: 190mm;
+        font-family: "Times New Roman", serif;
+        color: black;
+        font-size: 15pt; /* font isi diperbesar */
+        line-height: 2; /* jarak baris lega */
     }
 
-    /* Reset styling untuk print */
     #printSurat h3 {
-        font-family: "Times New Roman", serif;
-        font-size: 18px;
-        font-weight: bold;
-        margin: 0 0 25px 0;
-        padding: 0;
         text-align: center;
-        line-height: 1.5;
-        width: 100%;
-        max-width: 7in;
+        font-size: 22pt; /* judul besar */
+        margin-bottom: 28px;
+        font-weight: bold;
     }
 
     #printSurat p {
-        font-family: "Times New Roman", serif;
-        font-size: 13px;
-        line-height: 1.7;
-        margin: 12px 0;
-        padding: 0;
+        font-size: 15pt;
         text-align: justify;
-        orphans: 2;
-        widows: 2;
-        width: 100%;
-        max-width: 7in;
+        margin: 14px 0;
     }
 
-    #printSurat p.text-right {
-        text-align: center;
-        margin-bottom: 20px;
-        margin-top: 0;
-    }
-
-
-    #printSurat p.text-center {
-        text-align: center;
-    }
-
-    #printSurat p.font-weight-bold {
+    #pvKotaTanggal {
+        text-align: right;
         font-weight: bold;
+        margin-bottom: 20px;
     }
 
-    #printSurat .mt-3 {
-        margin-top: 15px;
+    #pvNamaPenulis {
+        margin-top: 80px; /* ruang tanda tangan */
+        font-weight: bold;
+        font-size: 15pt;
     }
 
-    #printSurat .mt-4 {
-        margin-top: 20px;
+    /* Matikan semua layout dashboard biar tidak ikut ke-print */
+    .container,
+    .container-fluid,
+    .row,
+    .col,
+    .card,
+    .card-body,
+    .wrapper,
+    .main-wrapper {
+        all: unset !important;
     }
 
-    #printSurat br {
-        display: block;
-        content: "";
-        margin: 8px 0;
-    }
-
-    /* Hapus semua border dan shadow untuk print */
-    #printSurat .card,
-    #printSurat .card-body {
-        border: none;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-        background: transparent;
-    }
-
-    /* Halaman baru jika konten terlalu panjang */
-    #printSurat {
-        page-break-inside: avoid;
-    }
-
-    /* Jangan print button dan form elements lainnya */
     .btn,
-    button,
+    form,
     input,
     textarea,
-    select {
-        display: none !important;
-    }
-
-    /* Hide navbar dan header saat print */
+    select,
     .nav-header,
     .header,
-    .sidebar,
-    .navbar,
-    .form-control {
+    .nk-sidebar,
+    .footer {
         display: none !important;
-    }
-
-    .print-footer {
-        position: static;
-        margin-top: 20px;
-        padding-top: 10px;
-        border-top: 1px solid #000;
-        text-align: center;
-        font-size: 11px;
-        font-family: "Times New Roman", serif;
     }
 }
