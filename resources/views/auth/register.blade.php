@@ -2,15 +2,15 @@
 <html class="h-100" lang="en">
 
 
-<!-- Mirrored from demo.themefisher.com/quixlab-bootstrap/page-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Feb 2025 02:31:40 GMT -->
+<!-- Mirrored from demo.themefisher.com/quixlab-bootstrap/page-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Feb 2025 02:31:58 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Vika Meysa</title>
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
     <!-- Favicon icon -->
-    <link rel="stylesheet" href="{{ asset('assets/images/favicon.html') }}">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.html') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     
 </head>
@@ -42,28 +42,27 @@
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
-                                <a class="text-center" href="index-2.html"> <h4>Login</h4></a>
+                                
+                                    <a class="text-center" href="index-2.html"> <h4>Register</h4></a>
         
-                                <form class="form-horizontal mt-4" method="POST" action="{{ route('login') }}">
+                                <form class="form-horizontal mt-4" action="{{route('register')}}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                         <input class="form-control" type="email" name="email" id="email"
-                                            value="{{ old('email') }}" required autofocus>
-                                        @error('email')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                        <input type="text" name="name" class="form-control"
+                                            value="{{ old('name') }}" placeholder="Name" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input class="form-control" type="password" name="password" id="password" required>
-                                        @error('password')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                        <input type="email" name="email" class="form-control"
+                                            value="{{ old('email') }}" placeholder="Email" required>
                                     </div>
-                                    <button class="btn login-form__btn submit w-100">Sign In</button>
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                                    </div>
+                                    <button class="btn login-form__btn submit w-100">Sign in</button>
                                 </form>
-                                <p class="mt-5 login-form__footer">Dont have account? <a href="{{ route('register') }}" class="text-primary">Sign Up</a> now</p>
+                                    <p class="mt-5 login-form__footer">Have account <a href="{{ route('login') }}" class="text-primary">Sign Up </a> now</p>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,5 +84,10 @@
     <script src="{{ asset('assets/js/styleSwitcher.js') }}"></script>
 </body>
 
-<!-- Mirrored from demo.themefisher.com/quixlab-bootstrap/page-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Feb 2025 02:31:40 GMT -->
+<!-- Mirrored from demo.themefisher.com/quixlab-bootstrap/page-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Feb 2025 02:31:58 GMT -->
 </html>
+
+
+
+
+
