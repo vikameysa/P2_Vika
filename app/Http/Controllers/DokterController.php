@@ -19,7 +19,9 @@ class DokterController extends Controller
             ->select('users.*', 't_poli.nama_poli')
             ->get();
 
-        return view('Dokter.dokter', compact('Dokter'));
+        $Poli = DB::table('t_poli')->orderBy('nama_poli')->get();
+
+        return view('Dokter.dokter', compact('Dokter', 'Poli'));
     }
 
     // ======================
@@ -70,6 +72,13 @@ class DokterController extends Controller
             'updated_at' => now(),
         ]);
 
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Dokter berhasil ditambahkan'
+            ]);
+        }
+
         return redirect()->route('Dokter.dokter')
             ->with('success', 'Dokter berhasil ditambahkan');
     }
@@ -103,6 +112,13 @@ class DokterController extends Controller
         }
 
         DB::table('users')->where('id', $id)->update($data);
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Dokter berhasil diperbarui'
+            ]);
+        }
 
         return redirect()->route('Dokter.dokter')
             ->with('success', 'Dokter berhasil diperbarui');

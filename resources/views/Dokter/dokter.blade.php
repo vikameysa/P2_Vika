@@ -48,11 +48,11 @@
 
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <button class="btn btn-outline-primary btn-sm"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#modalDokter{{ $s->id }}">
-                                            View
-                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm" 
+                                        data-toggle="modal" 
+                                        data-target="#modalDokter{{ $s->id }}">
+                                        View
+                                    </button>
 
                                         <a href="{{ route('Dokter.edit', $s->id) }}"
                                             class="btn btn-outline-warning btn-sm">
@@ -71,17 +71,17 @@
                                     </div>
                                 </td>
                             </tr>
-                            <!-- MODAL DETAIL Dokter -->
-                            <div class="modal fade" id="modalDokter{{ $s->id }}" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
 
-                                        <div class="modal-header">
+                            
+                           <!-- MODAL DETAIL Dokter -->
+                            <div class="modal fade" id="modalDokter{{ $s->id }}" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
                                             <h5 class="modal-title">Detail Dokter</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
-
-                                        <div class="modal-body text-center">
+                                                 <div class="modal-body text-center">
 
                                             {{-- FOTO --}}
                                             @if($s->avatar)
@@ -106,10 +106,7 @@
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                         </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                                
                             @empty
                             <tr>
                                 <td colspan="7" class="text-center text-muted">
